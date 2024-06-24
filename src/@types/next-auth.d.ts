@@ -1,5 +1,5 @@
 import NextAuth from 'next-auth/next'
-import GitHubProvider from 'next-auth/providers/github'
+import { type GithubProfile } from 'next-auth/providers/github'
 
 declare module 'next-auth' {
   interface Session {
@@ -7,7 +7,7 @@ declare module 'next-auth' {
       name: string
       email: string
       image: string
-      githubProfile: GitHubProvider
+      githubProfile: GithubProfile
     }
   }
 }

@@ -2,8 +2,8 @@ import Image from 'next/image'
 import { redirect } from 'next/navigation'
 import { getServerSession } from 'next-auth'
 
-import { ButtonLogin } from '@/_component/button-login'
 import GitHubLines from '@/assets/github-lines.svg'
+import { ButtonLogin } from '@/components/button-login'
 import { authOptions } from '@/configs/next-auth'
 
 export default async function Auth() {
