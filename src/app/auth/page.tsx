@@ -1,10 +1,17 @@
 import Image from 'next/image'
+import { redirect } from 'next/navigation'
+import { getServerSession } from 'next-auth'
 
-import Details from '@/assets/details.svg'
-import GitHubLogo from '@/assets/github.svg'
+import { ButtonLogin } from '@/_component/button-login'
 import GitHubLines from '@/assets/github-lines.svg'
+import { authOptions } from '@/configs/next-auth'
 
-export default function Auth() {
+export default async function Auth() {
+  const session = await getServerSession(authOptions)
+
+  if (session) {
+    return redirect('/')
+  }
   return (
     <main className="relative flex w-full max-w-4xl flex-col items-center px-6 pt-20 md:mx-auto md:pt-80">
       <h1 className="text-center text-5xl md:text-8xl">
@@ -16,15 +23,8 @@ export default function Auth() {
         revelando métricas e KPIs inestimáveis para aprimorar a entrega e a
         qualidade do software.
       </p>
-      <button className="mt-24 flex items-center gap-2 rounded-lg bg-button-background px-6 py-5 text-2xl text-text-light">
-        <Image src={GitHubLogo} alt="github logo" width={24} height={24} />
-        Login com GitHub
-      </button>
-      <Image
-        src={Details}
-        alt="Linha de  detalhes roxa"
-        className="fixed bottom-0 size-3/4 md:hidden"
-      />
+      <ButtonLogin />
+
       <Image
         src={GitHubLines}
         alt="Linha de  detalhes roxa"
