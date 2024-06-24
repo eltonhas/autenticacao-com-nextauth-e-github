@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import NextAuth from 'next-auth/next'
 import { type GithubProfile } from 'next-auth/providers/github'
 
